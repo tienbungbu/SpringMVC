@@ -13,9 +13,12 @@
 <c:url value="/add-user" var="url"/>
 <form:form action="${url }" method="post" modelAttribute="user" >
 <form:hidden path="id"/>
-<p>Ten: <form:input path="name"/> </p>
-<p>Username: <form:input path="username"/> </p>
-<p>Password: <form:password path="password"/> </p>
+<p>Ten: <form:input path="name"/> <label style="color:red"> <form:errors path="name"></form:errors> </label> </p>
+
+<p>Username: <form:input path="username"/> <label style="color:red"> <form:errors path="username"></form:errors> </label> </p>
+
+<p>Password: <form:password path="password"/> <label style="color:red"> <form:errors path="password"></form:errors> </label>  </p>
+
 <p>Role: 
 <form:select path="role">
 <form:option value="admin">Admin</form:option>

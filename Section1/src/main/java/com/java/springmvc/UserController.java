@@ -1,8 +1,10 @@
 package com.java.springmvc;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,7 +23,10 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/add-user", method = RequestMethod.POST)
-	public String addUser(HttpServletRequest req, @ModelAttribute("user") User user) {
+	public String addUser(HttpServletRequest req, @ModelAttribute("user") @Valid User user, BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) {
+			return "addUser";
+		}
 		req.setAttribute("user", user);
 		return "viewUser";
 		

@@ -1,9 +1,22 @@
  package com.java.model;
 
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+
+
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class User {
+	@Min(0)
 	private int id;
+	@NotEmpty
 	private String name;
+	@NotEmpty
+	@org.hibernate.validator.constraints.Email
 	private String username;
+	@Length(min = 6 , max = 12)
 	private String password;
 	private String role;
 	public int getId() {
