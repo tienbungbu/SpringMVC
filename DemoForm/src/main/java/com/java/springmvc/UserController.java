@@ -32,7 +32,11 @@ public class UserController {
 	@RequestMapping(value = "/add-user", method = RequestMethod.POST)
 	public String addUser(HttpServletRequest req, @ModelAttribute("user") @Valid User user, BindingResult bindingResult,
 			@RequestParam(name = "avatar") MultipartFile avatar) {
-
+		//messages errors
+		if(bindingResult.hasErrors()) {
+			return "addUser";
+		}
+		
 		// luu xuong o cung
 		try {
 			File saveFile = new File("E:\\SaveFile\\" + avatar.getOriginalFilename());
