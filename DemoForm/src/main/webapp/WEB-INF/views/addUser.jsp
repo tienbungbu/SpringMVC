@@ -11,7 +11,7 @@
 <body>
 		<h1>Register</h1>
 		<c:url value="/add-user" var="url" />
-		<form:form action="${url }" method="post" modelAttribute="user">
+		<form:form action="${url }" method="post" modelAttribute="user" enctype="multipart/form-data">
 			<form:hidden path="id"/>
 			<p>Ho va ten: <form:input path="name"/>  <label style="color:red"> <form:errors  path="name"></form:errors> </label>   </p>  
 			<p>username: <form:input path="username"/>  <label style="color:red"> <form:errors path="username"></form:errors> </label>   </p>
@@ -25,6 +25,8 @@
 				<form:option value="nam">Nam</form:option>
 				<form:option value="nu">Nu</form:option>
 			</form:select>
+			<br>
+			<form:input type="file"  path="avatar"/>
 			<br>
 			<form:radiobutton path="acceptAgreement" label="Dong Y Dieu Khoan Su Dung" value="true"/>
 			<br>

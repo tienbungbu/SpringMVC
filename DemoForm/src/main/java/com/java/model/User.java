@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
 
 public class User {
 	@NotEmpty
@@ -17,6 +18,16 @@ public class User {
 	private List<String> favourites;
 	private String about;
 	private boolean acceptAgreement;
+	private MultipartFile avatar;
+	
+	
+	
+	public MultipartFile getAvatar() {
+		return avatar;
+	}
+	public void setAvatar(MultipartFile avatar) {
+		this.avatar = avatar;
+	}
 	public String getName() {
 		return name;
 	}
