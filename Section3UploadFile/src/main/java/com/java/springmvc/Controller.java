@@ -4,8 +4,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -44,5 +48,24 @@ public class Controller {
 		
 		req.setAttribute("file", file);
 		return "viewFile";
+	}
+	
+	@RequestMapping(value = "/download-file", method = RequestMethod.GET)	
+	public void  downloadFile(HttpServletRequest req, HttpServletResponse resp) {
+		String dataDirectory = "E:\\SaveFile\\";
+		Path file = Paths.get(dataDirectory, "1.docx");
+		if(Files.exists(file)){
+			resp.setContentType("application/vnd.openxmlformats-officedocument.wordprocessingml.document");
+			resp.addHeader("Content-Disposition", "attachment; filename=chuyende.docx" );
+			
+			try {
+				Files.copy(file, resp.getOutputStream());
+				resp.getOutputStream().flush();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 	}
 }
