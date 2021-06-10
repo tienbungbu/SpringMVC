@@ -18,6 +18,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+import com.java.validator.UserValidator;
+
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "com.java")
@@ -42,6 +44,11 @@ public class SpringConfig extends WebMvcConfigurerAdapter {
 		bundleMessageSource.setBasename("classpath:messages");
 		bundleMessageSource.setDefaultEncoding("utf-8");
 		return bundleMessageSource;
+	}
+	
+	@Bean // su dung validator
+	public UserValidator userValidator() {
+		return new UserValidator();
 	}
 
 	@Bean(name = "multipartResolver") //upload file

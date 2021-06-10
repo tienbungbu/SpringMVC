@@ -1,16 +1,11 @@
 package com.java.model;
 
-import javax.validation.constraints.Digits;
-
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotEmpty;
-
 public class User {
 	private int id;
 	
-	@NotEmpty
+	
 	private String name;
-	@NotEmpty @Length(min = 9 , max = 12)
+	
 	private String phoneNumber;
 	
 	

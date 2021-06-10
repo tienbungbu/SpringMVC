@@ -1,9 +1,9 @@
-package com.java.controller;
+	package com.java.controller;
 
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,12 +15,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.java.model.User;
 import com.java.service.UserService;
+import com.java.validator.UserValidator;
 
 @Controller
 public class UserController {
 	
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	private UserValidator userValidator;
 	
 	@RequestMapping(value = "/list-user", method = RequestMethod.GET)
 	public String viewListUser(HttpServletRequest req) {
@@ -50,7 +54,8 @@ public class UserController {
 	
 	@RequestMapping(value = "/add-user", method = RequestMethod.POST)
 	public String addUser(HttpServletRequest req, 
-			@ModelAttribute("user")@Valid User user, BindingResult bindingResult ) {
+			@ModelAttribute("user") User user, BindingResult bindingResult ) {
+		userValidator.validate(user, bindingResult);
 		if(bindingResult.hasErrors()) {
 			return "user/addUser";
 		}
@@ -76,8 +81,8 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/update-user", method = RequestMethod.POST)
-	public String updateUser(HttpServletRequest req, @ModelAttribute("user")@Valid User user, BindingResult bindingResult ) {
-		
+	public String updateUser(HttpServletRequest req, @ModelAttribute("user") User user, BindingResult bindingResult ) {
+		userValidator.validate(user, bindingResult);
 		if(bindingResult.hasErrors()) {
 			return "user/updateUser";
 		}
