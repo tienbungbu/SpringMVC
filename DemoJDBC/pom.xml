@@ -75,6 +75,15 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.21</version>
 		</dependency>
+		
+				<!-- https://mvnrepository.com/artifact/org.springframework/spring-tx -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-tx</artifactId>
+		    <version>4.3.28.RELEASE</version>
+		</dependency>
+				
+		
 	</dependencies>
 	<build>
 		<plugins>
