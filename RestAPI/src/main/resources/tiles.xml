@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?><!DOCTYPE tiles-definitions PUBLIC
+	        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+	        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+	
+
+	<tiles-definitions>
+	    <!-- Base Definition -->
+	    <definition name="base-definition" template="/WEB-INF/views/layouts/defaultLayout.jsp">
+	        <put-attribute name="header" value="/WEB-INF/views/layouts/header.jsp"/>
+	        <put-attribute name="menu" value="/WEB-INF/views/layouts/menu.jsp"/>
+	        <put-attribute name="body" value=""/>
+	        <put-attribute name="footer" value="/WEB-INF/views/layouts/footer.jsp"/>
+	    </definition>
+	
+
+	    <!-- Product Page -->
+	    <definition name="addProduct" extends="base-definition">
+	        <put-attribute name="body" value="/WEB-INF/views/product/addProduct.jsp"/>
+	    </definition>
+	    <definition name="detailProduct" extends="base-definition">
+	        <put-attribute name="body" value="/WEB-INF/views/product/detailProduct.jsp"/>
+	    </definition>
+	    <definition name="listProducts" extends="base-definition">
+	        <put-attribute name="body" value="/WEB-INF/views/product/listProducts.jsp"/>
+	    </definition>
+	    <definition name="editProduct" extends="base-definition">
+	        <put-attribute name="body" value="/WEB-INF/views/product/editProduct.jsp"/>
+	    </definition>
+	
+
+	    <!-- Error Page -->
+	    <definition name="error" extends="base-definition">
+	        <put-attribute name="body" value="/WEB-INF/views/product/error.jsp"/>
+	    </definition>
+	    
+	
+
+	</tiles-definitions>
+
